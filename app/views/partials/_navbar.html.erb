@@ -4,25 +4,28 @@
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
         <%= image_tag('assets/logo.png', class:"bi me-2", size: '35x35')%>
       </a>
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a href="#" class="nav-link px-2 link-body-emphasis">Home</a></li>
         <li><a href="#" class="nav-link px-2 link-body-emphasis">Create</a></li>
       </ul>
       <form class="col-12 col-lg-8 mb-3 mb-lg-0 me-lg-3" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
       </form>
-      <div class="dropdown text-end">
-        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/sparshalc.png" alt="github-profile" width="32" height="32" class="rounded-circle">
-        </a>
-        <ul class="dropdown-menu text-small" style="">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-      </div>
+      <% if user_signed_in? %>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/sparshalc.png" alt="github-profile" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" style="">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><%= button_to 'Logout', destroy_user_session_path	,method: :delete, data: { turbo_confirm: "#{current_user.email } will be logged out."  }, class: 'dropdown-item text-danger' %></li>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </div>
 </header>

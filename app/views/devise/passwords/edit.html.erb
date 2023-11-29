@@ -1,0 +1,30 @@
+<div class="container d-flex justify-content-center align-items-center  h100">
+  <div class="form-element">
+    <div class="text-center">
+      <%= image_tag('assets/logo.png', size: '80x80') %>
+      <h1 class=" fw-bold text_brand mt-3">Change your password</h1>
+      <hr>
+    </div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :reset_password_token %>
+      <div class="field">
+        <%= f.label :password, "New password" %><br />
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirm new password" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Change my password" %>
+      </div>
+    <% end %>
+    <div class="mt-2">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

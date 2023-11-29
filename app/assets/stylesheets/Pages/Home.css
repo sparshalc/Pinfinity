@@ -13,11 +13,12 @@
 }
 .hero_section h1 span{
   background: rgb(198,33,33);
-background: linear-gradient(90deg, rgba(198,33,33,1) 0%, rgba(222,26,26,1) 100%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(90deg, rgba(198,33,33,1) 0%, rgba(222,26,26,1) 100%, rgba(0,212,255,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
+
 .hero_section p{
   font-size: var(--p-size-regular);
   color: var(--dark-grey);
