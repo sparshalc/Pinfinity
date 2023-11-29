@@ -1,0 +1,12 @@
+:root{
+  --ff-primary: 'Poppins', sans-serif !important;
+  --c-primary : #CC0000;
+  --h1-size-regular: 6em;
+  --p-size-regular: 1.2em;
+  --dark-grey: #111;
+  --f-bolder: 700;
+  --f-lighter: 400;
+}
+*{
+  font-family: var(--ff-primary); 
+}

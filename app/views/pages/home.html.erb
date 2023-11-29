@@ -1,0 +1,14 @@
+<div class="container hero_section">
+  <h1 class="text-center">Customer <br>
+    Ideas, <span>shared!</span></h1>
+  <p class="text-center mt-1">Powerful, flexible and data-driven,<br>
+    Pinfinity makes it easy to build the exact CRM your business needs.</p>
+  <% if user_signed_in? %>
+    <%= link_to 'Get Started', root_path, class: 'mt-2 btn btn-dark' %>
+  <% else %>
+    <div class="d-flex gap-2">
+      <%= link_to 'Log In', new_user_session_path, class: 'mt-2 btn btn-dark btn-lg' %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'mt-2 btn btn-dark btn-lg' %>
+    </div>
+  <% end %>
+</div>
