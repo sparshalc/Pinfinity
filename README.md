@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### When setting up the application for Guard file 
+Gems used for Live reload
++ listen
++ guard
++ guard-zeus
++ rack-liverload
++ guard-livereload
 
-Things you may want to cover:
+To Generate a guard file run
 
-* Ruby version
+  ```guard init livereload```
 
-* System dependencies
+Then run the rails server on one terminal using
 
-* Configuration
+  ```bin/dev```
 
-* Database creation
+And another terminal run
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  ```guard```
