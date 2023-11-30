@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   get '/inbox', to: 'rooms#index', as: 'inbox'
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registraions: 'users/registraions'
+    sessions: 'user/sessions',
+    registrations: 'user/registrations'
   }
+
   
   get '/home', to: 'pages#home', as: 'home'
 

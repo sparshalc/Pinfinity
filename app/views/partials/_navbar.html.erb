@@ -37,7 +37,7 @@
         </ul>
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/sparshalc.png" alt="github-profile" width="32" height="32" class="rounded-circle">
+            <%= image_tag(user_image(current_user), alt: "github-profile", width:"32", height:"32", class: "rounded-circle") %>
           </a>
           <ul class="dropdown-menu text-small" style="">
             <li><a class="dropdown-item" href="#">New project...</a></li>
