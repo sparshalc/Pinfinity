@@ -61,4 +61,6 @@ Rails.application.configure do
   config.assets.quiet = true
   config.action_controller.raise_on_missing_callback_actions = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.hosts << "3b4e-110-44-120-202.ngrok-free.app"
+  config.hosts << "3b4e-110-44-120-202.ngrok-free.app"
 end
