@@ -1,0 +1,28 @@
+.col-border{
+  border-right: 1px solid rgb(130, 130, 130);
+  height: 80vh;
+}
+.msg_form{
+  position: fixed;
+  bottom: 0;
+  width: 80vw;
+  padding: 10px;
+}
+#messages{
+  height: 75vh;
+  overflow: scroll;
+}
+.message-box{
+  background-color: grey;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 10px;
+}
+::-webkit-scrollbar{
+  width: 1px;
+}
+.bi-check-all{
+  font-size: 20px;
+}

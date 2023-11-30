@@ -8,9 +8,32 @@
         <li><a href="#" class="nav-link px-2 link-body-emphasis">Home</a></li>
         <li><a href="#" class="nav-link px-2 link-body-emphasis">Create</a></li>
       </ul>
-      <form class="col-12 col-lg-8 mb-3 mb-lg-0 me-lg-3" role="search">
+      <form class="col-12 col-lg-4 mb-3 mb-lg-0 me-lg-3" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
       </form>
+      <ul class="nav nav-pills gap-4 mx-4">
+        <li class="nav-item">
+          <% if (current_user.messages.count) == 0 %>
+            <%= link_to inbox_path, class: 'position-relative white' do%>
+              <i class="bi h4 text-dark  <%= active_link("rooms", "bi-chat-left-text-fill", "bi-chat-left-text") %>  "></i>
+              <span class="position-absolute top-0 start-100 translate-middle rounded-pill bg-danger">
+              </span>
+            <% end %>
+          <% else  %>
+            <%= link_to inbox_path, class: 'position-relative white' do%>
+              <i class="bi h4 text-dark  <%= active_link("rooms", "bi-chat-left-text-fill", "bi-chat-left-text") %>  "></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= current_user.messages.count %>
+              </span>
+            <% end %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to root_path do %>
+            <i class="bi bi-bell h4 text-dark"></i>
+          <% end %>
+        </li>
+      </ul>
       <% if user_signed_in? %>
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

@@ -1,0 +1,4 @@
+<div class="d-flex gap-2 justify-content-center">
+  <%= button_to 'Destroy', room_path(room), method: :delete, class: 'btn btn-sm btn-danger', data: { turbo_confirm: 'You sure? '} %>
+  <%= link_to 'Edit', edit_room_path(room), class: 'btn btn-success btn-sm w-100'%>
+</div>

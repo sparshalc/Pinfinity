@@ -12,7 +12,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;600;700;800;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
   </head>
+  <style>
+    <%= ".msg-#{current_user&.id}" %> {
+    background-color: #007bff !important;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+    float: right;
+    }
+    <%= ".cont-#{current_user&.id}" %> {
+    display: flex;
+    justify-content: flex-end;
+    }
+  </style>
   <body>
+    <div id="flash" class="flash">
+      <%= render "partials/flash" %>
+    </div>
     <%= render 'partials/navbar' %>
     <%= yield %>
   </body>
