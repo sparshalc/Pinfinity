@@ -1,8 +1,17 @@
+<%= turbo_stream_from "online_users", channel: OnlineChannel %>
 <div class="row p-4">
   <div class="col-lg-2 col-border ">
     <div class="user_details">
       <p class="fw-light">Logged in as: <br>
-        <span class="fw-bold"><%= current_user.email %><span class="badge text-bg-success mx-1">On</span></span></p>
+        <span class="fw-bold"><%= current_user.email %></span>
+      </p>
+    </div>
+    <hr>
+    <p class="text-center">Online Users</p>
+    <div id="users-list" class="d-flex gap-2">
+      <% @users.each do |user|  %>
+        <%= render 'partials/user', user: user %>
+      <% end %>
     </div>
     <hr>
     <div id="new-room">

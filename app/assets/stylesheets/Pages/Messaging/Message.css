@@ -26,3 +26,18 @@
 .bi-check-all{
   font-size: 20px;
 }
+
+.dot{
+  position: relative;
+}
+.dot::before{
+  position: absolute;
+  bottom: 5px;
+  right: -15px;
+  border-radius: 50%;
+  transform: translate(50%, 50%);
+  background-color: #45FC5D;
+  width: 15px;
+  height: 15px;
+  content: '';
+}

@@ -4,6 +4,8 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.order("Created_at Desc")
     @new_room = Room.new
+    user_online = Kredis.unique_list "users_online"
+    @users = User.find(user_online.elements)
   end
 
   def show
@@ -11,6 +13,8 @@ class RoomsController < ApplicationController
     @new_room = Room.new
     @messages = @room.messages.all.order('Created_at Asc')
     @message = Message.new
+    user_online = Kredis.unique_list "users_online"
+    @users = User.find(user_online.elements)
     render 'index'
   end
 
