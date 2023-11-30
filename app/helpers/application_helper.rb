@@ -10,4 +10,12 @@ module ApplicationHelper
       "#{not_active}"
     end
   end
+
+  def user_image(user)
+    if user.image.attached?
+      user.image
+    else
+      "https://github.com/sparshalc.png"
+    end
+  end
 end

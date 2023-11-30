@@ -1,20 +1,13 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
+  before_action :index_params, only: %i[index show]
 
   def index
-    @rooms = Room.order("Created_at Desc")
-    @new_room = Room.new
-    user_online = Kredis.unique_list "users_online"
-    @users = User.find(user_online.elements)
   end
 
   def show
-    @rooms = Room.order("Created_at Desc")
-    @new_room = Room.new
     @messages = @room.messages.all.order('Created_at Asc')
     @message = Message.new
-    user_online = Kredis.unique_list "users_online"
-    @users = User.find(user_online.elements)
     render 'index'
   end
 
@@ -30,6 +23,7 @@ class RoomsController < ApplicationController
       if @room.save
         format.turbo_stream { flash.now[:notice] = "Room added successfully." }
       else
+        format.html { redirect_to inbox_path, notice: "Room name can't be blank" }
       end
     end
   end
@@ -48,11 +42,20 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy!
     respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = "Room destroyed successfully." }
+        format.turbo_stream {flash.now[:notice] = "Room destroyed successfully." }
+
     end
   end
 
   private
+
+    def index_params 
+      @rooms = Room.order("Created_at Desc")
+      @new_room = Room.new
+      user_online = Kredis.unique_list "users_online"
+      @users = User.find(user_online.elements)
+    end
+    
     def set_room
       @room = Room.find(params[:id])
     end

@@ -1,6 +1,6 @@
 <div id="<%= dom_id(user) %>">
   <div class="d-flex flex-column align-items-center">
-    <img src="https://github.com/sparshalc.png" alt="github-profile"width="42" height="42" class="rounded-circle"><span class="dot"></span>
-    <small class="fw-light"><%= user.email.split('@')[0].capitalize %></small>
+    <%= image_tag(user_image(user), alt: "github-profile", width:"42", height:"42", class: "rounded-circle") %><span class="dot"></span>
+    <small class="fw-light"><%= user.name %></small>
   </div>
 </div>
