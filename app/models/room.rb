@@ -4,4 +4,6 @@ class Room < ApplicationRecord
   after_destroy_commit { broadcast_remove_to "rooms" }
   
   has_many :messages, dependent: :destroy
+
+  validates :name, presence: true
 end

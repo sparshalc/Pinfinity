@@ -8,7 +8,7 @@
     </div>
     <hr>
     <p class="text-center">Online Users</p>
-    <div id="users-list" class="d-flex gap-2">
+    <div id="users-list" class="d-flex gap-2" style="overflow-x: scroll;">
       <% @users.each do |user|  %>
         <%= render 'partials/user', user: user %>
       <% end %>
@@ -29,7 +29,7 @@
   <div class="col-lg-10">
     <% if @room %>
       <div class="d-flex justify-content-between align-items-center">
-        <h3 class="fw-bold display-6">
+        <h3 class="fw-bold display-6" id="<%= dom_id(@room, 'name') %>">
           <%= @room.name %>
         </h3>
         <br>

@@ -26,12 +26,10 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-
     respond_to do |format|
       if @room.save
         format.turbo_stream { flash.now[:notice] = "Room added successfully." }
       else
-        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -39,7 +37,8 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.turbo_stream { flash.now[:notice] = "Room has been updated." }
+        ActionCable.server.broadcast 'room_channel', {room_id: @room.id, room_name: @room.name }
+        format.turbo_stream { flash.now[:notice] = "Room has been updated." }        
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
