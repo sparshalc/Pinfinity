@@ -40,7 +40,7 @@ class BoardsController < ApplicationController
     @board.destroy!
 
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: "Board was successfully destroyed." }
+      format.turbo_stream
     end
   end
 

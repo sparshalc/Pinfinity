@@ -1,0 +1,30 @@
+<div id="main-wrapper" class="container mt-1 mb-2 p-3">
+  <div class="row justify-content-center">
+    <div class="col-xl-10">
+      <div class="card border-0">
+        <div class="card-body p-0">
+          <div class="row no-gutters">
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="mb-5">
+                  <h1 class="display-2 fw-bold"><%= @pin.name %></h1>
+                </div>
+                <h6 class="text-muted">Description</h6>
+                <p class="text-muted mt-2 mb-5"><%= @pin.description.present? ? @pin.description : "The description looks something like this. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English." %></p>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Added by</label>
+                    <p><%= @pin.user.email %></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-inline-block">
+              <%= image_tag(@pin.image, width: '500px')%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

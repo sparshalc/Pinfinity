@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :boards, except: %i[index] do
     resources :pins
   end
+  
   root 'pages#home'
 
   resources :rooms do
@@ -14,9 +15,10 @@ Rails.application.routes.draw do
     sessions: 'user/sessions',
     registrations: 'user/registrations'
   }
-
   
   get 'user/:id/profile', to: 'pages#profile', as: 'profile'
+  get 'feed', to: 'pages#feed', as: 'feed'
+  get '/pin/:id', to: 'pins#details', as: 'show_pin'
   get '/home', to: 'pages#home', as: 'home'
 
   get "up" => "rails/health#show", as: :rails_health_check

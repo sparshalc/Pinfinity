@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
+  def feed
+    @pin = Pin.all.order("RANDOM()")
+  end
+
   def home
-    @pin = Pin.all
   end
 
   def profile
