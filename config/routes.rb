@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :boards, except: %i[index]
+  resources :boards, except: %i[index] do
+    resources :pins
+  end
   root 'pages#home'
 
   resources :rooms do

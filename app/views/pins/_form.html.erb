@@ -1,0 +1,6 @@
+<div class="form-group msg-form">
+  <%= form_with(model: [@board ,@pin], remote: true, class: "d-flex" ) do |f| %>
+    <%= f.file_field :image, class: "form-control" %>
+    <%= f.submit  class: "btn btn-primary", data: { action: 'click->bootstrap#submitEnd'}  %>
+  <% end %>
+</div>

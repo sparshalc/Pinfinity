@@ -1,4 +1,19 @@
 <%= render 'partials/return_home' %>
 <div class="container d-flex justify-content-center align-items-center mt-5">
   <%= render @board %>
+  <hr>
+</div>
+<div class="container">
+  <hr class="mt-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h3 class="fw-light mt-4">Board Pins</h3>
+    <%= link_to new_board_pin_path(@board.id), data: { controller: 'bs-modal'}  do%>
+      <i class="bi bi-plus-circle h2 text-secondary"></i>
+    <% end %>
+  </div>
+  <div id="board_pins" class="d-flex gap-4 flex-wrap mt-5">
+    <% @pins.each do |pin| %>
+      <%= render 'pins/pin', pin: pin %>
+    <% end %>
+  </div>
 </div>

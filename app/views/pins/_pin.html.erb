@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem; border: 0;">
+  <div class="card-image">
+    <%= image_tag(pin.image, class: "card-img-top overflow-hidden") if pin.image.attached? %>
+  </div>
+  <div class="d-flex justify-content-between mt-3 align-items-center">
+    <div class="card_name">
+      <p class="card-title text-center fw-bold"><%= time_ago_in_words(pin.created_at) %></p>
+    </div>
+    <div class="board_action">
+    </div>
+  </div>
+</div>

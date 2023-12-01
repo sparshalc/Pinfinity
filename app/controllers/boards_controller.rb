@@ -3,7 +3,8 @@ class BoardsController < ApplicationController
   before_action :correct_user, only: %i[ edit update destroy ]
 
   def show
-    
+    @pin = Pin.new
+    @pins = @board.pins.all
   end
 
   def new
