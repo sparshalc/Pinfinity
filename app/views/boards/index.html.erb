@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<h1>Boards</h1>
+<div id="boards">
+  <% @boards.each do |board| %>
+    <%= render board %>
+  <% end %>
+</div>
+<%= link_to "New board", new_board_path %>

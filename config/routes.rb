@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :boards, except: %i[index]
   root 'pages#home'
 
   resources :rooms do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   }
 
   
+  get 'user/:id/profile', to: 'pages#profile', as: 'profile'
   get '/home', to: 'pages#home', as: 'home'
 
   get "up" => "rails/health#show", as: :rails_health_check

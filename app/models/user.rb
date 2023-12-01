@@ -2,10 +2,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :messages
+  with_options dependent: :destroy do 
+    has_many :messages
+    has_many :boards
+  end
+
   has_one_attached :image
 
   def name
     email.split('@')[0].capitalize!
   end
+
 end
