@@ -9,8 +9,8 @@ label.board_image_label{
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
 }
 .new_img_box{
   position: relative;
@@ -22,7 +22,7 @@ label.board_image_label{
   border-radius: 10px;
   background-color: grey;
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

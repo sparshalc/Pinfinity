@@ -11,16 +11,7 @@
   <% end %>
   <div class="row m-5 d-flex justify-content-center align-items-center">
     <div class="col-lg-6">
-      <% if @board.image.attached? %>
-        <div class=" d-flex justify-content-center align-item-center">
-          <%= image_tag(@board.image, width: '400px', height: '400px')%>
-        </div>
-      <% else %>
-        <div class="new_img_box d-flex justify-content-center align-item-center">
-          <%= form.label :image, class: 'form-control board_image_label'  %>
-          <%= form.file_field :image, class: 'board_input' %>
-        </div>
-      <% end %>
+      <%= render "partials/image", form: form, board: @board %>
     </div>
     <div class="col-lg-6">
       <div>

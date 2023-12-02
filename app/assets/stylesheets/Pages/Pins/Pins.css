@@ -1,3 +1,12 @@
+.image{
+  width: 100px;
+  height: 100px;
+  z-index: 9999;
+  pointer-events: none;
+}
+.board_image_label{
+  color: transparent;
+}
 .image_container{
   width: 1440px;
   margin: 20px auto;
@@ -12,7 +21,6 @@
 .image_container .box img{
   max-width: 100%;
   border-radius: 15px;
-  color: black;
 }
 @media (max-width: 1200px) {
   .image_container{
