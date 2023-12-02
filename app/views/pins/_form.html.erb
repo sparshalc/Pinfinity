@@ -1,0 +1,23 @@
+<%= form_with(model: [@board ,@pin], remote: true ) do |form| %>
+  <div class="row gap-5 m-5">
+    <div class="col-lg-5">
+      <%= render "partials/image", form: form, board: @pin %>
+    </div>
+    <div class="col-lg-6">
+      <div>
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+      <div>
+        <%= form.label :description, style: "display: block" %>
+        <%= form.text_area :description, class: 'form-control' %>
+      </div>
+      <div>
+        <%= form.hidden_field :user_id, class: 'form-control', value: current_user.id, id: 'board_user_id' %>
+      </div>
+      <div>
+        <%= form.submit class: 'btn mt-3 btn-dark w-100', data: { action: 'click->bootstrap#submitEnd'} %>
+      </div>
+    </div>
+  </div>
+<% end %>

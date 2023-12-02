@@ -1,0 +1,24 @@
+<%= turbo_frame_tag board do %>
+  <div class="card" style="width: 18rem; border: 0;">
+    <div class="card-image">
+      <%= link_to image_tag(board.image, class: "card-img-top overflow-hidden"), board, data: { turbo_frame: '_top'} if board.image.attached?  %>
+    </div>
+    <div class="d-flex justify-content-between mt-3 align-items-center">
+      <div class="card_name">
+        <p class="card-title text-center fw-bolder"><%= board.name %></p>
+        <small class="text-muted"><%= pluralize(board.pins.count, 'Pin') %>  | <%= time_ago_in_words(board.created_at) + ' ago' %>
+        </small>
+      </div>
+      <% if verify_user(current_user, board) %>
+        <div class="board_action d-flex justify-content-center align-items-center ">
+          <%= link_to edit_board_path(board), data: { controller: 'bs-modal' } do %>
+            <i class="bi bi-pen"></i>
+          <% end %>
+          <%= button_to board_path(board), method: :delete, class: 'btn text-danger', data: { turbo_confirm: 'You sure?'} do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

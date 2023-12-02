@@ -1,0 +1,8 @@
+<%= turbo_frame_tag pin do %>
+  <div class="card mb-1" style="width: 18rem; border: 0;">
+    <div class="box image_hover">
+      <%= link_to image_tag(pin.image, class: "card-img-top overflow-hidden"), board_pin_path(pin.board_id, pin), data: { controller: 'bs-modal' } if pin.image.attached? %>
+      <i class="bi bi-eye display-1"></i>
+    </div>
+  </div>
+<% end %>

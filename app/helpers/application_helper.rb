@@ -11,6 +11,10 @@ module ApplicationHelper
     end
   end
 
+  def verify_user(user, modal)
+    modal.user.id == user.id
+  end
+  
   def user_image(user)
     if user.image.attached?
       user.image

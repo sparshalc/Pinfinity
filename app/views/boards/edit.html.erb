@@ -1,0 +1,5 @@
+<div class="container mt-5">
+  <%= turbo_frame_tag @board do %>
+    <%= render "form", board: @board %>
+  <% end %>
+</div>

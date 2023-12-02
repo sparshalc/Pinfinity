@@ -1,0 +1,5 @@
+<div id="board_pins" class="image_container">
+  <% @pin.each do |pin| %>
+    <%= render 'pins/pin', pin: pin %>
+  <% end %>
+</div>

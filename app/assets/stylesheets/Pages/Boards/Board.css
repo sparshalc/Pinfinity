@@ -1,0 +1,45 @@
+input[type="file"].board_input {
+  display: none;
+}
+label.board_image_label{
+  font-size: 18px;
+  border: 4px dotted grey;
+  color: white;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 200px;
+  height: 300px;
+}
+.new_img_box{
+  position: relative;
+}
+.new_img_box::before{
+  content: '';
+  width: 10px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: grey;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.new_img_box::after{
+  content: '';
+  width: 10px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: grey;
+  position: absolute;
+  top: 40%;
+  left: 48;
+  transform: rotate(90deg);
+}
+
+.card-img-top{
+  width: 100% !important;
+  height: auto;
+  overflow: hidden;
+}
