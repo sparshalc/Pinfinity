@@ -9,6 +9,7 @@ class PinsController < ApplicationController
   def show
     @pin = Pin.find(params[:id])
     @board = Board.find_by(id: params[:board_id])
+    @comments = @pin.comments.all
   end
 
   def create

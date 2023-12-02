@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :messages
     has_many :boards
     has_many :pins
+    has_many :comments
   end
 
   has_one_attached :image
