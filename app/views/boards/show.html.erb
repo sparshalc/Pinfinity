@@ -1,4 +1,4 @@
-<%= render 'partials/return_home' %>
+  <%= render 'partials/return_home' %>
 <div class="container d-flex justify-content-center align-items-center mt-5">
   <%= render @board %>
   <hr>
@@ -15,14 +15,6 @@
     <% @pins.each do |pin| %>
       <div class="d-flex flex-column">
         <%= render 'pins/pin', pin: pin %>
-        <div class="d-flex justify-content-end align-items-center">
-          <%= link_to edit_board_pin_path(@board, pin), data: { controller: 'bs-modal'} do %>
-            <i class="bi bi-pen mx-2"></i>
-          <% end %>
-          <%= button_to [pin.board, pin], class: 'btn  text-danger ',method: :delete, data: {'turbo-method': :delete, action: 'click->bootstrap#submitEnd'} do %>
-            <i class="bi bi-trash mx-2"></i>
-          <% end %>
-        </div>
       </div>
     <% end %>
   </div>

@@ -1,11 +1,12 @@
 class PinsController < ApplicationController
-  before_action :set_board, only: [:new, :details, :create, :destroy]
+  before_action :set_board, only: [:new, :show, :create, :destroy]
+  before_action :correct_user, only: %i[ edit update destroy ]
 
   def new
     @pin = Pin.new
   end
 
-  def details
+  def show
     @pin = Pin.find(params[:id])
     @board = Board.find_by(id: params[:board_id])
   end
@@ -59,6 +60,11 @@ class PinsController < ApplicationController
 
   def set_board
     @board = Board.find_by(id: params[:board_id])
+  end
+
+  def correct_user
+    @pin = current_user.pins.find_by(id: params[:id])
+    redirect_to root_path,alert: "Only the admin of this pin can access this!" if @pin.nil?
   end
   
   def pins_params

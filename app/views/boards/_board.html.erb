@@ -9,14 +9,16 @@
         <small class="text-muted"><%= pluralize(board.pins.count, 'Pin') %>  | <%= time_ago_in_words(board.created_at) + ' ago' %>
         </small>
       </div>
-      <div class="board_action d-flex justify-content-center align-items-center ">
-        <%= link_to edit_board_path(board), data: { controller: 'bs-modal' } do %>
-          <i class="bi bi-pen"></i>
-        <% end %>
-        <%= button_to board_path(board), method: :delete, class: 'btn text-danger', data: { turbo_confirm: 'You sure?'} do %>
-          <i class="bi bi-trash"></i>
-        <% end %>
-      </div>
+      <% if verify_user(current_user, board) %>
+        <div class="board_action d-flex justify-content-center align-items-center ">
+          <%= link_to edit_board_path(board), data: { controller: 'bs-modal' } do %>
+            <i class="bi bi-pen"></i>
+          <% end %>
+          <%= button_to board_path(board), method: :delete, class: 'btn text-danger', data: { turbo_confirm: 'You sure?'} do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

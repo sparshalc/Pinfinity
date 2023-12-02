@@ -51,7 +51,7 @@ class BoardsController < ApplicationController
 
     def correct_user
       @board = current_user.boards.find_by(id: params[:id])
-      redirect_to root_path,alert: "Only admin can access this!" if @board.nil?
+      redirect_to root_path,alert: "Only the admin of this board can access this!" if @board.nil?
     end
 
     def board_params

@@ -1,30 +1,30 @@
-<div id="main-wrapper" class="container mt-1 mb-2 p-3">
-  <div class="row justify-content-center">
-    <div class="col-xl-10">
-      <div class="card border-0">
-        <div class="card-body p-0">
-          <div class="row no-gutters">
-            <div class="col-lg-6">
-              <div class="p-5">
-                <div class="mb-5">
-                  <h1 class="display-3 fw-light fw-bold"><%= @pin.name %></h1>
-                </div>
-                <h6 class="text-muted">Description</h6>
-                <p class="text-muted mt-2 mb-5"><%= @pin.description.present? ? @pin.description : "The description looks something like this. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English." %></p>
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Added by</label>
-                    <p><%= @pin.user.email %></p>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-6 d-none d-lg-inline-block">
-              <%= image_tag(@pin.image, width: '500px')%>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <div class="row list-project">
+    <div class="col-md-5">
+      <%= image_tag(@pin.image, class: "rounded tablet-top", size: '400x400') %>
     </div>
+    <div class="col-md-7">
+      <div class="project-info-box">
+        <h3 class="fw-bold"><%= @pin.name %></h3>
+        <p class="text-muted"><%= @pin.description.present? ? @pin.description : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English." %></p>
+      </div>
+      <hr>
+      <div class="project-info-box mb-10">
+        <p><b>Board:</b> <%= @pin.board.name %></p>
+        <p><b>Date:</b> <%= time_ago_in_words(@pin.created_at) + ' ago'%></p>
+        <p><b>Designer: </b><%= @pin.user.email %> <%= image_tag(@pin.user.image, size: '20x20', class: 'mx-2') %></p>
+      </div>
+      <a href="#" class="btn btn-dark d-block">VIEW PROJECT</a>
+    </div>
+    <% if verify_user(current_user, @pin)%>
+      <div class="d-flex justify-content-end align-items-center">
+        <%= link_to edit_board_pin_path(@board, @pin), data: { controller: 'bs-modal'} do %>
+          <i class="bi bi-pen mx-2"></i>
+        <% end %>
+        <%= button_to [@pin.board, @pin], class: 'btn  text-danger ',method: :delete, data: {'turbo-method': :delete, turbo_confirm: 'You sure?', action: 'click->bootstrap#submitEnd'} do %>
+          <i class="bi bi-trash mx-2"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   
   get 'user/:id/profile', to: 'pages#profile', as: 'profile'
   get 'feed', to: 'pages#feed', as: 'feed'
-  get '/pin/:id', to: 'pins#details', as: 'show_pin'
   get '/home', to: 'pages#home', as: 'home'
 
   get "up" => "rails/health#show", as: :rails_health_check
