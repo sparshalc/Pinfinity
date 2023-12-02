@@ -23,6 +23,24 @@ class PinsController < ApplicationController
     end
   end
 
+  def edit
+    @pin = Pin.find(params[:id])
+    @board = Board.find_by(id: params[:board_id])
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+
+    respond_to do |format|
+      if @pin.update(pins_params)
+        format.turbo_stream
+      else
+        render :edit
+      end
+    end
+  end
+
+
   def destroy
     @pin = Pin.find(params[:id])
     @board = @pin.board  

@@ -14,7 +14,6 @@
   border-radius: 15px;
   color: black;
 }
-
 @media (max-width: 1200px) {
   .image_container{
     width: calc(100% - 40px);
@@ -50,6 +49,8 @@
   color: #5369f8 !important;
 }
 #main-wrapper{
-  box-shadow: rgba(0, 0, 0, 0.401) 0px 3px 8px;
   border-radius: 8px;
 }
+.box_shadow{
+  box-shadow: rgba(0, 0, 0, 0.401) 0px 3px 8px;
+}  
