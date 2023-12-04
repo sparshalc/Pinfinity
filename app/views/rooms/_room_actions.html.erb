@@ -1,8 +1,28 @@
 <div class="d-flex gap-2 justify-content-center">
-  <%= button_to room_path(room), method: :delete, class: 'btn btn-sm btn-danger', data: { turbo_confirm: 'You sure? '}  do %>
+  <button type='button' class= 'btn btn-sm btn-danger' data-controller= 'delete-modal' data-action="click->delete-modal#click">
     <i class="bi bi-trash3"></i>
-  <% end %>
+  <button>
   <%= link_to edit_room_path(room), class: 'btn btn-success btn-sm w-100' do%>
     <i class="bi bi-pen"></i>
   <% end %>
+</div>
+
+<!-- Bootstrap Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this room?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <!-- delete logic -->
+        <%= button_to "Delete", room_path(room), method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
 </div>
