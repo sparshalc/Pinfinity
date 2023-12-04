@@ -21,7 +21,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <!-- delete logic -->
-        <%= button_to "Delete", room_path(room), method: :delete, class: "btn btn-danger" %>
+        <%= button_to "Delete", room_path(room), method: :delete, class: "btn btn-danger", data: { 'bs-dismiss': "modal" } %>
       </div>
     </div>
   </div>
