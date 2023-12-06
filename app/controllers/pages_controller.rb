@@ -10,6 +10,10 @@ class PagesController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
-    @board = @user.boards.public_board
+    if current_user.id == @user.id
+      @board = @user.boards.all
+    else
+      @board = @user.boards.public_board
+    end
   end
 end

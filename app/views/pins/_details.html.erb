@@ -1,35 +1,54 @@
 <div class="container">
   <div class="row list-project">
     <div class="col-md-5">
-      <%= image_tag(@pin.image, class: "rounded tablet-top", size: '400x400') if @pin.image.attached? %>
+      <div class="image_container d-flex justify-content-center align-items-center" style="height: 400px; width: 400px; overflow:hidden;">
+        <%= image_tag(@pin.image, class: "rounded", width: 'auto', height: '100%') if @pin.image.attached? %>
+      </div>
     </div>
     <div class="col-md-7">
+      <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+          <div class="user_avatar">
+            <%= image_tag(user_image(@pin.user), size: '35x35', class: 'rounded-circle')%>
+          </div>
+          <div class="user_details d-flex flex-column">
+            <b><%= @pin.user.email%></b>
+            <small class="text-muted fw-light"><%= time_ago_in_words(@pin.created_at)+ ' ago'%> • <i class="<%= @pin.board.isPrivate? ? 'bi bi-lock' : 'bi bi-globe' %>"></i></small>
+          </div>
+        </div>
+        <div class="admin_post_action">
+          <% if verify_user(current_user, @pin)%>
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to edit_board_pin_path(@board, @pin),class: 'text-decoration-none dropdown-item', data: { controller: 'bs-modal'} do %>
+                    Edit  <i class="bi bi-pen mx-2"></i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= button_to [@pin.board, @pin], class: 'btn  text-danger dropdown-item',method: :delete, data: {'turbo-method': :delete, turbo_confirm: 'You sure?', action: 'click->bootstrap#submitEnd'} do %>
+                    Remove <i class="bi bi-trash mx-2"></i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr>
       <div class="project-info-box">
         <h3 class="fw-bold"><%= @pin.name %></h3>
         <p class="text-muted"><%= @pin.description.present? ? @pin.description : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English." %></p>
       </div>
-      <div class="d-flex gap-2">
-        <i class="bi bi-chat-dots"></i>
-        <p id="<%= "pin_#{@pin.id}" %>"><%= pluralize(@pin.comments.count, 'comment')  %></p>
+      <hr>
+      <div class="d-flex gap-2 align-items-center">
+        <i class="bi bi-chat-dots h3"></i>
+        <h6  id="<%= "pin_#{@pin.id}" %>"><%= pluralize(@pin.comments.count, 'comment')  %></h6>
       </div>
       <hr>
-      <% if verify_user(current_user, @pin)%>
-        <div class="d-flex justify-content-start align-items-center">
-          <%= link_to edit_board_pin_path(@board, @pin),class: 'text-decoration-none', data: { controller: 'bs-modal'} do %>
-            Edit  <i class="bi bi-pen mx-2"></i>
-          <% end %>
-          <%= button_to [@pin.board, @pin], class: 'btn  text-danger ',method: :delete, data: {'turbo-method': :delete, turbo_confirm: 'You sure?', action: 'click->bootstrap#submitEnd'} do %>
-            Remove <i class="bi bi-trash mx-2"></i>
-          <% end %>
-        </div>
-      <% end %>
-      <hr>
-      <div class="project-info-box mb-10">
-        <p><b>Board:</b> <%= @pin.board.name %></p>
-        <p><b>Date:</b> <%= time_ago_in_words(@pin.created_at) + ' ago'%></p>
-        <p><b>Designer: </b><%= @pin.user.email %> <%= image_tag(user_image(@pin.user), size: '20x20', class: 'mx-2 rounded-circle') %></p>
-      </div>
+      <%= render 'comments/comments'%>
     </div>
   </div>
-  <%= render 'comments/comments'%>
 </div>

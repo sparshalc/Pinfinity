@@ -19,7 +19,7 @@ module ApplicationHelper
     if user.image.attached?
       user.image
     else
-      "https://github.com/sparshalc.png"
+      "https://avatars.githubusercontent.com/u/3171503?s=200&v=4"
     end
   end
 end

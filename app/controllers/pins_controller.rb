@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_action :set_board, only: [:new, :show, :create, :destroy]
+  before_action :set_board, only: %i[new show create destroy]
   before_action :correct_user, only: %i[ edit update destroy ]
 
   def new
@@ -8,7 +8,6 @@ class PinsController < ApplicationController
 
   def show
     @pin = Pin.find(params[:id])
-    @board = Board.find_by(id: params[:board_id])
     @comments = @pin.comments.all
   end
 
@@ -42,20 +41,14 @@ class PinsController < ApplicationController
     end
   end
 
-
   def destroy
     @pin = Pin.find(params[:id])
-    @board = @pin.board  
-  
+    @pin.destroy!
+
     respond_to do |format|
-      if @pin.destroy
-        format.turbo_stream 
-      else
-        redirect_to root_path, alert: 'Failed to delete pin.'
-      end
+      format.turbo_stream
     end
   end
-  
   
   private
 

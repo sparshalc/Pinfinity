@@ -1,9 +1,13 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: %i[ show edit update destroy ]
+
   before_action :correct_user, only: %i[ edit update destroy ]
 
+  before_action :check_pin_status, only: %i[ edit update destroy show ]
+  
   def show
     @pin = Pin.new
+    
     @pins = @board.pins.all
   end
 
@@ -56,5 +60,14 @@ class BoardsController < ApplicationController
 
     def board_params
       params.require(:board).permit(:isPrivate, :name, :description, :image, :user_id)
+    end
+
+    def check_pin_status
+      @board = Board.find(params[:id])
+    
+      if @board.isPrivate? && @board.user.id != current_user.id
+        redirect_to root_path,notice: 'Oops! the link is broken!'
+      else
+      end
     end
 end
