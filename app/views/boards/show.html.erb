@@ -6,7 +6,7 @@
 <div class="container">
   <hr class="mt-5">
   <div class="d-flex justify-content-between align-items-center">
-    <h3 class="fw-light mt-4">Board Pins</h3>
+    <h3 class="fw-light mt-4" id="pins_title">Board Pins<i class="bi bi-pin"></i></h3>
     <%= link_to new_board_pin_path(@board.id), data: { controller: 'bs-modal'}  do%>
       <i class="bi bi-plus-circle h2 text-secondary"></i>
     <% end %>

@@ -1,8 +1,9 @@
 <%= turbo_frame_tag board do %>
   <div class="card" style="width: 18rem; border: 0;">
     <div class="card-image">
-      <%= link_to image_tag(board.image, class: "card-img-top overflow-hidden"), board, data: { turbo_frame: '_top'} if board.image.attached?  %>
+      <%= link_to image_tag(board.image, class: "card-img-top overflow-hidden private_#{board.isPrivate}"), board, data: { turbo_frame: '_top'} if board.image.attached?  %>
     </div>
+    <span class="toggle_<%= board.isPrivate? ? 'text' : '' %>"></span>
     <div class="d-flex justify-content-between mt-3 align-items-center">
       <div class="card_name">
         <p class="card-title text-center fw-bolder"><%= board.name %></p>

@@ -43,3 +43,16 @@ label.board_image_label{
   height: auto;
   overflow: hidden;
 }
+.private_true{
+  filter: contrast(0);
+  pointer-events: none;
+}
+.toggle_text::before{
+  position: absolute;
+  content: 'Private ';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -160%);
+  font-weight: 500;
+  color: white;
+}
