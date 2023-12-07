@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def notifications
     if current_user
-      @notifications = current_user.notifications.limit(3)
+      @notifications = current_user.notifications.all.order('Created_at DESC')
       current_user.notifications.mark_as_read!
     end
   end
