@@ -1,0 +1,9 @@
+<% if current_user.id != @user.id%>
+  <% if current_user.following?(@user) %>
+    <%= button_to "Unfollow", unfollow_path(@user), class:'btn btn-danger mt-2 mb-2' , data: { turbo_confirm: 'You sure?' } %>
+  <% elsif current_user.sent_follow_request_to?(@user)%>
+    <%= button_to "Cancel follow request", cancel_path(@user), class:'btn btn-danger mt-2 mb-2', data: { turbo_confirm: 'You sure?' }  %>
+  <% else %>
+    <%= button_to "Follow",  follow_path(@user), class:'btn btn-dark mt-2 mb-2'%>
+  <% end %>
+<% end %>

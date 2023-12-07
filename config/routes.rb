@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   get 'edit_description/:id', to: 'members#edit_description', as: 'edit_member_description'
   patch 'update_description', to: 'members#update_description', as: 'update_member_description'
 
+  post 'followability/:id/follow', to: 'followability#follow', as: 'follow'
+  post 'followability/:id/unfollow', to: 'followability#unfollow', as: 'unfollow'
+  post 'followability/:id/accept', to: 'followability#accept', as: 'accept'
+  post 'followability/:id/decline', to: 'followability#decline', as: 'decline'
+  post 'followability/:id/cancel', to: 'followability#cancel', as: 'cancel'
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

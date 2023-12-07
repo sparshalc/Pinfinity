@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         followability
 
   with_options dependent: :destroy do 
     has_many :messages

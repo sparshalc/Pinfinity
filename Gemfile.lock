@@ -116,6 +116,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    followability (1.1.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     http (5.1.1)
@@ -281,6 +282,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9)
+  followability (~> 1.1)
   jbuilder
   jsbundling-rails
   kredis
