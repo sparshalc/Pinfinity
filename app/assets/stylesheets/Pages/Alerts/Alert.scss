@@ -16,17 +16,8 @@
   &__message {
     color: white;
     padding: 10px 10px;
-    background: linear-gradient(90deg, rgba(78,76,231,1) 0%, rgba(60,127,246,1) 100%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(198,33,33,1) 0%, rgba(222,26,26,1) 100%, rgba(0,212,255,1) 100%);
     animation: appear-then-fade 4s both;
     border-radius: 999px;
-  }
-}
-
-@keyframes appear-then-fade {
-  0%, 100% {
-    opacity:0
-  }
-  5%, 60% {
-    opacity:1
   }
 }

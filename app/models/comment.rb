@@ -17,6 +17,6 @@ class Comment < ApplicationRecord
                           partial: 'notifications/notification',
                           locals: { user:, pin:, unread: true}
 
-    ActionCable.server.broadcast 'notification_count', { pin_user: pin.user.id, user: user.id, notifications: pin.user.notifications.count }
+    ActionCable.server.broadcast 'notification_count', { pin_user: pin.user.id, user: user, notifications: pin.user.notifications.count, pin_id: pin.name }
   end
 end
