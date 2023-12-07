@@ -5,7 +5,7 @@
     Explore, curate, and share  <br>
     ideas effortlessly in a  vibrant community. Welcome to a world without limits.</p>
   <% if user_signed_in? %>
-    <%= link_to 'Get Started', root_path, class: 'mt-2 btn btn-dark' %>
+    <%= link_to 'Get Started', feed_path, class: 'mt-2 btn btn-dark' %>
   <% else %>
     <div class="d-flex gap-2">
       <%= link_to 'Log In', new_user_session_path, class: 'mt-2 btn btn-dark btn-lg' %>

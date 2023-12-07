@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get 'feed', to: 'pages#feed', as: 'feed'
   get '/home', to: 'pages#home', as: 'home'
   get '/notifications', to: 'pages#notifications', as: 'notifications'
+  get 'edit_description/:id', to: 'members#edit_description', as: 'edit_member_description'
+  patch 'update_description', to: 'members#update_description', as: 'update_member_description'
+
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
