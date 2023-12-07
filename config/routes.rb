@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'user/:id/profile', to: 'pages#profile', as: 'profile'
   get 'feed', to: 'pages#feed', as: 'feed'
   get '/home', to: 'pages#home', as: 'home'
+  get '/notifications', to: 'pages#notifications', as: 'notifications'
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
