@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+  def unfollow(user)
+    followerable_relationships.where(followable_id: user.id).destroy_all
+  end
+
   def name
     email.split('@')[0].capitalize!
   end

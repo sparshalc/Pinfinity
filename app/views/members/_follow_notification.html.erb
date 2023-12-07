@@ -1,0 +1,40 @@
+<p class="text-center text-muted fw-light">All activities releted to your connection will pop here!</p>
+<div class="row">
+  <div >
+    <div class="container my-3 p-3 bg-body rounded shadow-sm">
+      <h6 class="border-bottom pb-2 mb-0 text-muted">Recent Requests</h6>
+      <% current_user.follow_requests.each do |request| %>
+        <div class="d-flex justify-content-between text-body-secondary pt-3 border-bottom">
+          <div class="pb-3 mb-0 small lh-sm">
+            <strong class="text-gray-dark"><%= link_to request.followerable.name, profile_path(request.followerable.id) %></strong>
+            requested to follow you. <small class="fw-light">(<%= time_ago_in_words(request.created_at)+ ' ago' %>)</small>
+          </div>
+          <div class="req_actions d-flex mb-2">
+            <%= button_to "Accept", accept_path(request.followerable), class:'btn btn-primary btn-sm' %>
+            <%= button_to "Decline", decline_path(request.followerable), class:'btn btn-danger mx-1 btn-sm' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <div class="container my-3 p-3 bg-body rounded shadow-sm">
+      <h6 class="border-bottom pb-2 mb-0 text-muted">Recent Followers</h6>
+      <% if current_user.followers.count > 0%>
+        <% current_user.followers.each do |user| %>
+          <div class="d-flex text-body-secondary border-bottom pt-3">
+            <p class="pb-3 mb-0 small lh-sm ">
+              <strong class="d-flex gap-4 text-gray-dark">
+                <%= user.email %>
+                <span class="badge text-bg-danger">New</span>
+              </strong>
+              started following you...
+            </p>
+          </div>
+        <% end %>
+      <% else %>
+        <h2 class="fw-bold mt-3 text-muted">No Recent followers.</h2>
+      <% end %>
+    </div>
+  </div>
+</div>

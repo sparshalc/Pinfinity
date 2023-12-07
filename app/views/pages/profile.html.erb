@@ -15,7 +15,7 @@
       <div class="d-flex flex-column align-items-center">
         <b class="fw-bolder"><%= current_user.followers.count %></b>
         <p class="h5 fw-light">
-          Followers
+          <%= link_to 'Followers', followers_path, data: { controller: 'bs-modal' } %>
         </p>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="d-flex flex-column align-items-center">
         <b class="fw-bolder"><%= current_user.following.count %></b>
         <p class="h5 fw-light">
-          Following
+          <%= link_to 'Following', following_path, data: { controller: 'bs-modal' } %>
         </p>
       </div>
     </div>

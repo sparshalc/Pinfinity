@@ -1,0 +1,4 @@
+<% @followers.each do |user| %>
+  <h3 class="text-center text-muted">Followers</h3>
+  <%= render 'members/individual_followers', user: user%>
+<% end %>

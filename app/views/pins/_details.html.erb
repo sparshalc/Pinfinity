@@ -12,7 +12,7 @@
             <%= image_tag(user_image(@pin.user), size: '35x35', class: 'rounded-circle')%>
           </div>
           <div class="user_details d-flex flex-column">
-            <b><%= @pin.user.email%></b>
+            <b><%= link_to @pin.user.email, profile_path(@pin.user.id)%></b>
             <small class="text-muted fw-light"><%= time_ago_in_words(@pin.created_at)+ ' ago'%> • <i class="<%= @pin.board.isPrivate? ? 'bi bi-lock' : 'bi bi-globe' %>"></i></small>
           </div>
         </div>

@@ -31,6 +31,15 @@
               </span>
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to request_notification_path, class: 'position-relative  mx-4', data: { controller: 'bs-modal' } do%>
+              <i class="bi <%= active_link("pages", " bi-people-fill", "bi-people", "notifications") %> </i> h4 text-dark"></i>
+              <span class="position-absolute left-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= connection_notifications %>
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            <% end %>
+          </li>
         </ul>
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
