@@ -8,6 +8,13 @@ class PagesController < ApplicationController
   def home
   end
 
+  def notifications
+    if current_user
+      @notifications = current_user.notifications.all.order('Created_at DESC')
+      current_user.notifications.mark_as_read!
+    end
+  end
+
   def profile
     @user = User.find(params[:id])
     if current_user.id == @user.id

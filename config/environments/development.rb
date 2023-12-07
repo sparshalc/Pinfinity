@@ -65,5 +65,4 @@ Rails.application.configure do
   config.hosts << "3b4e-110-44-120-202.ngrok-free.app"
 
   # Live Reload
-  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 end

@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :boards
     has_many :pins
     has_many :comments
+    has_many :notifications, as: :recipient
   end
 
   has_one_attached :image

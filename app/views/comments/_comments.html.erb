@@ -1,8 +1,5 @@
 <div id="comment-form">
   <%= render 'comments/form' %>
-  <% if @comments.count >= 3 %>
-    <a href="">See more</a>
-  <% end %>
 </div>
 <div id="comments">
   <% @comments.each do |comment| %>

@@ -3,8 +3,8 @@ module ApplicationHelper
     turbo_stream.prepend "flash", partial: "partials/flash"
   end
 
-  def active_link(active_controller, active_class, not_active)
-    if params[:controller] == "#{active_controller}"
+  def active_link(active_controller, active_class, not_active, active_action="index")
+    if params[:controller] == "#{active_controller}" && params[:action] == "#{active_action}"
       "#{active_class}"
     else
       "#{not_active}"
@@ -19,7 +19,7 @@ module ApplicationHelper
     if user.image.attached?
       user.image
     else
-      "https://avatars.githubusercontent.com/u/3171503?s=200&v=4"
+      "https://www.thespian.hr/assets/svg/logo-8a266154734a6b2b1a509c96923a771321bbf06a301daa52285428912dbecd5e.svg"
     end
   end
 end

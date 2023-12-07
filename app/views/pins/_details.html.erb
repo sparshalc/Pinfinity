@@ -28,7 +28,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= button_to [@pin.board, @pin], class: 'btn  text-danger dropdown-item',method: :delete, data: {'turbo-method': :delete, turbo_confirm: 'You sure?', action: 'click->bootstrap#submitEnd'} do %>
+                  <%= button_to [@pin.board, @pin], class: 'btn text-danger dropdown-item',method: :delete, data: {'turbo-method': :delete, turbo_confirm: 'You sure?', action: 'click->bootstrap#submitEnd'} do %>
                     Remove <i class="bi bi-trash mx-2"></i>
                   <% end %>
                 </li>
