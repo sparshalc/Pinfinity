@@ -3,8 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["container", "input_form"]
   connect(){
-    console.log('Connected')
-    console.log(this.containerTarget)
     this.resetScroll()
     this.containerTarget.addEventListener("DOMNodeInserted", () => {
     this.resetScroll()

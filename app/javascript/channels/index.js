@@ -2,3 +2,4 @@
 import "./room_channel"
 import "./comment_count_channel"
 import "./notification_count_channel"
+import "./message_count_channel"
