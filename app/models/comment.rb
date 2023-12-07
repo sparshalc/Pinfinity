@@ -1,7 +1,10 @@
 class Comment < ApplicationRecord
+
   belongs_to :user
   belongs_to :pin
+
   has_noticed_notifications
+
   after_create_commit { broadcast_notification }
 
   def broadcast_notification
@@ -13,5 +16,7 @@ class Comment < ApplicationRecord
                           target: "notifications_#{pin.user.id}",
                           partial: 'notifications/notification',
                           locals: { user:, pin:, unread: true}
+
+    ActionCable.server.broadcast 'notification_count', { pin_user: pin.user.id, user: user.id, notifications: pin.user.notifications.count }
   end
 end

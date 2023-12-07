@@ -1,9 +1,9 @@
 <%= form_with(model: [@board, @pin, @pin.comments.build], url: board_pin_comments_path(@board, @pin)) do |f| %>
   <div class="container mt-5">
     <section class="mb-5">
-      <div class="-body">
-        <%= f.text_area :title, class: 'form-control', rows: "3", placeholder: "Join the discussion and leave a comment!", id: 'comment_form' %>
-        <%= f.submit class: 'btn btn-dark mt-2 my-2' %>
+      <div class="d-flex gap-2">
+        <%= f.text_field :title, class: 'form-control', rows: "3", placeholder: "Join the discussion and leave a comment!", id: 'comment_form' %>
+        <%= f.submit 'Add Comment', class: 'btn btn-dark' %>
       </div>
     </section>
   </div>

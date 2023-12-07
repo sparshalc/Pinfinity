@@ -1,3 +1,4 @@
+<div id="user-id" class="d-none"><%= current_user.id %></div>
 <header class="p-3 mb-3 border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -28,7 +29,7 @@
           <li class="nav-item">
             <%= link_to notifications_path, class: 'position-relative white', data: { controller: 'bs-modal'} do%>
               <i class="bi h4 text-dark <%= active_link("pages", " bi-bell-fill", " bi-bell", "notifications") %> "></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notification_count_<%= current_user.id%>">
                 <%= current_user.notifications.count %>
               </span>
             <% end %>
