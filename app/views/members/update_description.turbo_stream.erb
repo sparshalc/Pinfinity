@@ -1,0 +1,3 @@
+<%= turbo_stream.update(dom_id(@user)) do %>
+  <%= render 'pages/users_profile', user: @user %>
+<% end %>

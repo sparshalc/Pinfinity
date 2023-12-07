@@ -29,3 +29,10 @@
     opacity:1
   }
 }
+
+.user_profile_description{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 581px;
+}
