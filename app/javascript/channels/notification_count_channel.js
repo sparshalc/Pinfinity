@@ -2,7 +2,6 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("NotificationCountChannel", {
   connected() {
-    console.log("Connected to notification count channel")
   },
 
   disconnected() {

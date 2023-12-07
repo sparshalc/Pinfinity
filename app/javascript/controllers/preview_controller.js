@@ -4,7 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["input", "preview"]
   connect() {
-    console.log("Connected to Preview controller")
   }
   preview(){
     let input = this.inputTarget;

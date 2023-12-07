@@ -21,7 +21,7 @@
           <li class="nav-item">
             <%= link_to inbox_path, class: 'position-relative white' do%>
               <i class="bi h4 text-dark  <%= active_link("rooms", "bi-chat-left-text-fill", "bi-chat-left-text") %>  "></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="message_count_<%= current_user.id %>">
                 <%= current_user.messages.count %>
               </span>
             <% end %>
