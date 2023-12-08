@@ -77,6 +77,20 @@
           </div>
         </div>
       </div>
+      <div class="row mt-5 mb-5">
+        <div class="col-lg-6">
+          <div class="card p-3">
+            <p class="text-muted">Board(In Linechart)</p>
+            <%= line_chart current_user.boards.group_by_day(:created_at, range: 1.week.ago...Time.now).count %>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card p-3">
+            <p class="text-muted">Boards(In Piechart)</p>
+            <%= pie_chart current_user.boards.group_by_day(:created_at, range: 1.week.ago...Time.now).count %>
+          </div>
+        </div>
+      </div>
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
@@ -160,6 +174,9 @@
                       <td><%= time_ago_in_words(pin.created_at) + ' ago'%> </td>
                       <td>
                         <div class="d-flex gap-2">
+                          <%= link_to board_pin_path(pin.board_id, pin), class: 'btn btn-primary' do %>
+                            <i class="bi bi-eye-fill"></i>
+                          <% end %>
                           <%= link_to edit_board_pin_path(board, pin),class: ' btn btn-success', data: { controller: 'bs-modal'} do %>
                             <i class="bi bi-pen"></i>
                           <% end %>
@@ -173,6 +190,54 @@
                 <% end %>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 mb-5">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="card-title">Latest Followers</h6>
+            </div>
+            <div class="card-body">
+              <% current_user.followers.each do |followers| %>
+                <ul class="users-list clearfix">
+                  <div class="d-flex gap-2">
+                    <div class="user_image">
+                      <%= image_tag(user_image(followers), size: '50x50', class: 'rounded-circle') %>
+                    </div>
+                    <div class="details d-flex flex-column">
+                      <span class="users-list-name" ><b><%= followers.email%></b></span>
+                      <small>Joined <%= time_ago_in_words(followers.created_at)+ ' ago' %> </small>
+                    </div>
+                  </div>
+                </ul>
+                <hr>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="card-title">Latest Following</h6>
+            </div>
+            <div class="card-body">
+              <% current_user.following.each do |followers| %>
+                <ul class="users-list clearfix">
+                  <div class="d-flex gap-2">
+                    <div class="user_image">
+                      <%= image_tag(user_image(followers), size: '50x50', class: 'rounded-circle') %>
+                    </div>
+                    <div class="details d-flex flex-column">
+                      <span class="users-list-name" ><b><%= followers.email%></b></span>
+                      <small>Joined <%= time_ago_in_words(followers.created_at)+ ' ago' %> </small>
+                    </div>
+                  </div>
+                </ul>
+                <hr>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
