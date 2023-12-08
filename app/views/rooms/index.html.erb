@@ -1,3 +1,4 @@
+<% content_for(:html_title) { "Rooms | " } %>
 <%= turbo_stream_from "online_users", channel: OnlineChannel %>
 <div class="row p-4">
   <div class="col-lg-2 col-border ">

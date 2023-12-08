@@ -1,0 +1,7 @@
+<% items = [
+["Feed", feed_path],
+["For You", foryou_path]
+]%>
+<div class="d-flex justify-content-end p-1 mx-5">
+  <%= select_tag "Select", options_for_select(items, request.path), onchange: "Turbo.visit(this.selectedOptions[0].value)", class: 'custom-dropdown' %>
+</div>

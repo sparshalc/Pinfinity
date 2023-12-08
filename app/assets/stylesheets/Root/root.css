@@ -1,11 +1,5 @@
 :root{
   --ff-primary: 'Poppins', sans-serif !important;
-  --c-primary : #CC0000;
-  --h1-size-regular: 6em;
-  --p-size-regular: 1.2em;
-  --dark-grey: #111;
-  --f-bolder: 700;
-  --f-lighter: 400;
 }
 *{
   font-family: var(--ff-primary); 
@@ -35,4 +29,11 @@
   justify-content: center;
   align-items: center;
   width: 581px;
+}
+.custom-dropdown{
+  background: rgb(198,33,33);
+    border: 0;
+  padding: 8px;
+  color: white;
+  border-radius: 8px;
 }
