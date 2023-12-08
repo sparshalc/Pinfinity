@@ -1,0 +1,16 @@
+<% content_for(:html_title) { 'For You | ' } %>
+<%= render 'partials/dropdown' %>
+<% @user.each do |user| %>
+  <% if user.pins.present? %>
+    <div class="image_container">
+      <% user.pins.each do |pin| %>
+        <%= render 'pins/pin', pin: pin %>
+      <% end %>
+    </div>
+  <% else %>
+    <h3 class="text-center h2 fw-light mt-5 text-muted">
+      <p class="h1"><i class="bi bi-pin-fill"></i></p>
+      Oops! No Pins Found!
+    </h3>
+  <% end %>
+<% end %>

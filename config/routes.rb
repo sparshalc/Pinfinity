@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'edit_description/:id', to: 'members#edit_description', as: 'edit_member_description'
   patch 'update_description', to: 'members#update_description', as: 'update_member_description'
   get '/follow/notifications', to: 'members#notification_reqs', as: 'request_notification'
+  get '/foryou', to: 'members#foryou', as: 'foryou'
 
   post 'followability/:id/follow', to: 'followability#follow', as: 'follow'
   post 'followability/:id/unfollow', to: 'followability#unfollow', as: 'unfollow'

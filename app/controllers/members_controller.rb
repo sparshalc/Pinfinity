@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-    before_action :verify_user, only: %i[followers following]
+  before_action :verify_user, only: %i[followers following]
   def edit_description; end
 
   def update_description
@@ -9,6 +9,10 @@ class MembersController < ApplicationController
               format.turbo_stream
           end
       end
+  end
+
+  def foryou
+    @user = current_user.following.all
   end
 
   def notification_reqs

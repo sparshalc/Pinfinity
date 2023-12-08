@@ -1,4 +1,5 @@
-  <%= render 'partials/return_home' %>
+<% content_for(:html_title) { "Following | " } %>
+<%= render 'partials/return_home' %>
 <div class="container mt-5">
   <% @following.each do |user| %>
     <%= render 'members/individual_followers', user: user%>
