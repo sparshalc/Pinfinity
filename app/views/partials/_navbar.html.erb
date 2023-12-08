@@ -52,6 +52,9 @@
             <li>
               <%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %>
             </li>
+            <li>
+              <%= link_to 'Dashboard', admin_path, class: 'dropdown-item' %>
+            </li>
             <li><hr class="dropdown-divider"></li>
             <li><%= button_to 'Logout', destroy_user_session_path	,method: :delete, data: { turbo_confirm: "#{current_user.email } will be logged out."  }, class: 'dropdown-item text-danger' %></li>
           </ul>

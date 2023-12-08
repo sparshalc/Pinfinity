@@ -4,22 +4,20 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
-  
-  resources :likes, only: [:create, :destroy]
 
-  root 'pages#home'
+  resources :likes, only: [:create, :destroy]
 
   resources :rooms do
     resources :messages
   end
-  
   get '/inbox', to: 'rooms#index', as: 'inbox'
-
+  
   devise_for :users, controllers: {
     sessions: 'user/sessions',
     registrations: 'user/registrations'
   }
   
+  root 'pages#home'
   get 'user/:id/profile', to: 'pages#profile', as: 'profile'
   get 'feed', to: 'pages#feed', as: 'feed'
   get '/home', to: 'pages#home', as: 'home'
@@ -37,6 +35,8 @@ Rails.application.routes.draw do
   post 'followability/:id/accept', to: 'followability#accept', as: 'accept'
   post 'followability/:id/decline', to: 'followability#decline', as: 'decline'
   post 'followability/:id/cancel', to: 'followability#cancel', as: 'cancel'
+
+  get '/dashboard', to: 'admin#dashboard', as: 'admin'
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
