@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :likes, only: [:create, :destroy]
+
   root 'pages#home'
 
   resources :rooms do

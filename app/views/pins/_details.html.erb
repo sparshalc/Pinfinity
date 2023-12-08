@@ -43,9 +43,18 @@
         <p class="text-muted"><%= @pin.description.present? ? @pin.description : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English." %></p>
       </div>
       <hr>
-      <div class="d-flex gap-2 align-items-center">
-        <i class="bi bi-chat-dots h3"></i>
-        <h6  id="<%= "pin_#{@pin.id}" %>"><%= pluralize(@pin.comments.count, 'comment')  %></h6>
+      <div class="d-flex gap-2 align-items-center ">
+        <%= turbo_frame_tag(dom_id(@pin, :likes)) do %>
+          <div class="likes_box">
+            <div class="d-flex gap-3 justify-content-start align-items-center">
+              <%= render 'likes/like', pin: @pin, like: @like%>
+            </div>
+          </div>
+        <% end %>
+        <div class="comment d-flex align-items-center">
+          <i class="bi bi-chat-square-text text-primary h3 mx-2"></i>
+          <h5 class="text-primary"  id="<%= "pin_#{@pin.id}" %>"><%= pluralize(@pin.comments.count, 'comment') %></h5>
+        </div>
       </div>
       <hr>
       <%= render 'comments/comments'%>

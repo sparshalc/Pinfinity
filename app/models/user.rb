@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   with_options dependent: :destroy do 
     has_many :messages
+    has_many :likes
     has_many :boards
     has_many :pins
     has_many :comments
