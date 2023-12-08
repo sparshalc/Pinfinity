@@ -6,6 +6,7 @@ class FollowabilityController < ApplicationController
 
   def follow
     current_user.send_follow_request_to(@user)
+    ActionCable.server.broadcast 'followers_count', { follow: @user.follow_requests, following_user: current_user, user: @user.id, message: 'requested to follow you' }
     redirect_to request.referrer
   end
 
@@ -29,6 +30,7 @@ class FollowabilityController < ApplicationController
 
   def cancel
     current_user.remove_follow_request_for(@user)
+    ActionCable.server.broadcast 'followers_count', { follow: @user.follow_requests, following_user: current_user, user: @user.id, message: 'canceled the request'  }
     redirect_to request.referrer
   end
 

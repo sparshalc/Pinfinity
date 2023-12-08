@@ -26,13 +26,8 @@ module ApplicationHelper
   def users_not_followed
     User.where.not(id: current_user.following_ids).where.not(id: current_user.id) 
   end
-
-  def post_notifications
-    current_user.notifications.count
-  end
   
   def connection_notifications
     current_user.follow_requests.count
   end
-
 end
