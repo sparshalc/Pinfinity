@@ -1,0 +1,6 @@
+  <%= render 'partials/return_home' %>
+<div class="container mt-5">
+  <% @following.each do |user| %>
+    <%= render 'members/individual_followers', user: user%>
+  <% end %>
+</div>

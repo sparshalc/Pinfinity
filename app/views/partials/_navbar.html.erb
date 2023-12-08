@@ -13,9 +13,6 @@
           <%= link_to 'Create', new_board_path, class: 'nav-link px-2 link-body-emphasis' %>
         </li>
       </ul>
-      <form class="col-12 col-lg-4 mb-3 mb-lg-0 me-lg-3" role="search">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-      </form>
       <% if user_signed_in? %>
         <ul class="nav nav-pills gap-4 mx-4">
           <li class="nav-item">
@@ -31,6 +28,15 @@
               <i class="bi h4 text-dark <%= active_link("pages", " bi-bell-fill", " bi-bell", "notifications") %> "></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notification_count_<%= current_user.id%>">
                 <%= current_user.notifications.count %>
+              </span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to request_notification_path, class: 'position-relative', data: { controller: 'bs-modal' } do%>
+              <i class="bi <%= active_link("pages", " bi-people-fill", "bi-people", "notifications") %> </i> h4 text-dark"></i>
+              <span class="position-absolute left-0 start-100 translate-middle badge rounded-pill bg-danger"  id="follow_count_<%= current_user.id%>">
+                <%= connection_notifications %>
+                <span class="visually-hidden">unread messages</span>
               </span>
             <% end %>
           </li>

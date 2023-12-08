@@ -1,0 +1,8 @@
+<% if @followers.present? %>
+  <% @followers.each do |user| %>
+    <h3 class="text-center text-muted">Followers</h3>
+    <%= render 'members/individual_followers', user: user%>
+  <% end %>
+<% else %>
+  <p class="text-center text-muted">No Followers Found!</p>
+<% end %>

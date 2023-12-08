@@ -22,4 +22,12 @@ module ApplicationHelper
       "https://www.thespian.hr/assets/svg/logo-8a266154734a6b2b1a509c96923a771321bbf06a301daa52285428912dbecd5e.svg"
     end
   end
+
+  def users_not_followed
+    User.where.not(id: current_user.following_ids).where.not(id: current_user.id) 
+  end
+  
+  def connection_notifications
+    current_user.follow_requests.count
+  end
 end

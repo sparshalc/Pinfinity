@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         followability
 
   with_options dependent: :destroy do 
     has_many :messages
@@ -11,6 +12,10 @@ class User < ApplicationRecord
   end
 
   has_one_attached :image
+
+  def unfollow(user)
+    followerable_relationships.where(followable_id: user.id).destroy_all
+  end
 
   def name
     email.split('@')[0].capitalize!
