@@ -1,0 +1,3 @@
+<%= turbo_stream.update(dom_id(@pin, :likes)) do %>
+  <%= render 'likes/like', pin: @pin, like: @like%>
+<% end %>

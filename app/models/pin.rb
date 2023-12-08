@@ -1,5 +1,10 @@
 class Pin < ApplicationRecord
-  has_many :comments
+
+  with_options dependent: :destroy do 
+    has_many :comments
+    has_many :likes
+  end
+
   belongs_to :board
   belongs_to :user
 

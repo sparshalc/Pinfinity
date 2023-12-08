@@ -1,0 +1,18 @@
+<div class="likes" >
+  <% like = current_user.likes.find_by(pin: pin) %>
+  <% if like.nil? %>
+    <%= button_to likes_path, method: :post, params: { like: { pin_id: pin.id } }, class: 'btn' do %>
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-heart h3" style="color: red;"></i>
+        <h5 class="text-danger"><%= pluralize(pin.likes.count, 'like') %></h5>
+      </div>
+    <% end %>
+  <% else %>
+    <%= button_to like_path(like), method: :delete, class: 'btn' do %>
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-heart-fill h3" style="color: red;"></i>
+        <h5 class="text-danger"><%= pluralize(pin.likes.count, 'like') %></h5>
+      </div>
+    <% end %>
+  <% end %>
+</div>
