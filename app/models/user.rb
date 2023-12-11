@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         followability
+         followability 
 
   with_options dependent: :destroy do 
+    has_many :rooms
     has_many :messages
     has_many :likes
     has_many :boards

@@ -33,7 +33,7 @@
           </li>
           <li class="nav-item">
             <%= link_to request_notification_path, class: 'position-relative', data: { controller: 'bs-modal' } do%>
-              <i class="bi <%= active_link("pages", " bi-people-fill", "bi-people", "notifications") %> </i> h4 text-dark"></i>
+              <i class="bi <%= active_link("members", " bi-people-fill", "bi-people", "notification_reqs") %> </i> h4 text-dark"></i>
               <span class="position-absolute left-0 start-100 translate-middle badge rounded-pill bg-danger"  id="follow_count_<%= current_user.id%>">
                 <%= connection_notifications %>
                 <span class="visually-hidden">unread messages</span>
@@ -47,13 +47,13 @@
           </a>
           <ul class="dropdown-menu text-small" style="">
             <li>
-              <%= link_to 'Settings', edit_user_registration_path(current_user),class: "dropdown-item" %>
-            </li>
-            <li>
               <%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %>
             </li>
             <li>
               <%= link_to 'Dashboard', admin_path, class: 'dropdown-item' %>
+            </li>
+            <li>
+              <%= link_to 'Settings', edit_user_registration_path(current_user),class: "dropdown-item" %>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li><%= button_to 'Logout', destroy_user_session_path	,method: :delete, data: { turbo_confirm: "#{current_user.email } will be logged out."  }, class: 'dropdown-item text-danger' %></li>
