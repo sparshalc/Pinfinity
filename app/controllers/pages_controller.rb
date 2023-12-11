@@ -2,7 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
 
   def feed
-    @pin = Pin.all.order("RANDOM()")
+    @pagy, @pin = pagy_countless(Pin.all.order("RANDOM()"), items: 10)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def home
