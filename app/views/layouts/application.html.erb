@@ -29,6 +29,7 @@
     <div id="flash" class="flash">
       <%= render "partials/flash" %>
     </div>
+    <div id="scrollToTop"  data-controller="scroll-to-top"><i class="bi bi-arrow-up text-white"></i></div>
     <%= turbo_frame_tag "remote_modal" %>
     <%= render 'partials/navbar' %>
     <%= yield %>

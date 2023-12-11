@@ -21,3 +21,6 @@ application.register("removals", RemovalsController)
 
 import ScrollController from "./scroll_controller"
 application.register("scroll", ScrollController)
+
+import ScrollToTopController from "./scroll_to_top_controller"
+application.register("scroll-to-top", ScrollToTopController)
