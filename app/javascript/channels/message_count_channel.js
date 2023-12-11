@@ -15,7 +15,7 @@ consumer.subscriptions.create("MessageCountChannel", {
     const bottom_flash_message = document.getElementById('btn-flash-msg')
     
     if(data.message_user_id.user_id != user_id[0].innerHTML){
-      bottom_flash_message.innerHTML = `${data.user.email} messaged on ${data.room}`
+      bottom_flash_message.innerHTML = `<i class="bi bi-chat-square-text h6"></i> <strong>${data.user.email}</strong> messaged on ${data.room}`
       bottom_flash.classList.add('active')
       
       setTimeout(()=>{

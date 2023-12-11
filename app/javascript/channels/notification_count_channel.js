@@ -15,7 +15,7 @@ consumer.subscriptions.create("NotificationCountChannel", {
     if(user_id[0].innerHTML == data.pin_user){
         const notification_count = document.getElementById(`notification_count_${data.pin_user}`)
         notification_count.innerHTML = data.notifications
-        bottom_flash_message.innerHTML = `${data.user.email} commented on your post (${data.pin_id})`
+        bottom_flash_message.innerHTML = `<i class="bi bi-chat-square-text-fill"></i> <strong>${data.user.email}</strong> commented on your post (${data.pin_id})`
         bottom_flash.classList.add('active')
         
         setTimeout(()=>{
