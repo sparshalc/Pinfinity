@@ -1,0 +1,23 @@
+#scrollToTop {
+  width: 56px;
+  height: 50px;
+  background: linear-gradient(90deg, rgba(198,33,33,1) 0%, rgba(222,26,26,1) 100%, rgba(0,212,255,1) 100%);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  visibility: hidden;
+}
+#scrollToTop:hover{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+#scrollToTop.bi{
+  color: white !important;
+  font-size: 20px;
+}
+#scrollToTop.active{
+  visibility: initial;
+}
