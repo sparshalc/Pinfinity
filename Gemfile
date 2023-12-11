@@ -76,3 +76,7 @@ gem "followability", "~> 1.1"
 
 gem "chartkick"
 gem "groupdate"
+
+gem "pagy", "~> 6.2"
+
+gem "faker", "~> 3.2"
